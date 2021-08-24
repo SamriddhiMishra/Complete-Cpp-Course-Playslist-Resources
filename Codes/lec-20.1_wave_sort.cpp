@@ -1,0 +1,39 @@
+//Wave sort
+//https://www.geeksforgeeks.org/sort-array-wave-form-2/
+
+#include<bits/stdc++.h>
+using namespace std;
+
+void swap(int arr[], int i, int j)
+{
+	int temp = arr[i];
+	arr[i] = arr[j];
+	arr[j] = temp;
+}
+
+void waveSort(int arr[], int n)
+{
+	for(int i=1;i<n;i+= 2)
+	{	
+		if(arr[i] > arr[i-1])
+			swap(arr, i, i-1);
+
+		if(i<= n-2 && arr[i] > arr[i+1])
+			swap(arr, i, i+1);
+	}
+}
+
+int main()
+{
+	int arr[] = {1, 2, 3, 4 ,5 ,6 ,7};
+	int n = sizeof(arr)/sizeof(arr[0]);
+
+	waveSort(arr, n);
+
+	for(int i=0;i<n;i++)
+		cout<<arr[i]<<" ";
+	return 0;
+}
+
+//Time- T(n/2) - O(n)
+//Space- O(n)
